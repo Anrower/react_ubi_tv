@@ -4,8 +4,6 @@ import App from './App';
 
 
 ReactDOM.render(
-  <div>
-    App is working boy!
-  </div>,
+  <App />,
   document.getElementById('root')
 );
