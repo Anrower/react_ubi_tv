@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ClassCounter from './components/ClassCounter';
 import Counter from './components/counter';
+import './styles/App.css'
 
 function App() {
   //  Использовал деструктуризацию так как функция,
@@ -11,10 +12,17 @@ function App() {
 
   return (
     <div className="App">
-      <Counter />
-      <ClassCounter />
-      {/* Применял двухсторонее связывание.
-       Состояния h2 и Input  */}
+      <div className='post'>
+        <div className='post__content'>
+          <strong>1. Javascript</strong>
+          <div>
+            Javascript - is programming language
+          </div>
+        </div>
+        <div className='post__btns'>
+          <button>Delete</button>
+        </div>
+      </div>
     </div>
   );
 }
