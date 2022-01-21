@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ClassCounter from './components/ClassCounter';
 import Counter from './components/counter';
+import PostItem from './components/PostItem';
 import './styles/App.css'
 
 function App() {
@@ -12,17 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className='post'>
-        <div className='post__content'>
-          <strong>1. Javascript</strong>
-          <div>
-            Javascript - is programming language
-          </div>
-        </div>
-        <div className='post__btns'>
-          <button>Delete</button>
-        </div>
-      </div>
+      <PostItem />
     </div>
   );
 }
