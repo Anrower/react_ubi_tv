@@ -1,35 +1,24 @@
 import React, { useState } from 'react';
+import PostList from './components/PostList';
+import MyButton from './components/UI/button/MyButton';
+import './styles/App.css'
+import MyInput from './components/UI/input/MyInput';
 
 function App() {
-  //  Использовал деструктуризацию так как функция,
-  //  UseState возвращает массив из двух объектов
-  //  1ый аргумент функции.
-  //  2ой Функция которая обновляет State
-  const [likes, setLikes] = useState(5)
-  const [value, setValue] = useState('Input text')
-
-  function increment() {
-    setLikes(likes + 1)
-  }
-
-  function decrement() {
-    setLikes(likes - 1)
-
-  }
+  const [posts, setPosts] = useState([
+    { id: 1, title: 'Javascript', body: 'Description' },
+    { id: 2, title: 'PHP', body: 'Description' },
+    { id: 3, title: 'Goland', body: 'Description' },
+  ])
 
   return (
     <div className="App">
-      <h1>{likes}</h1>
-      <h2>{value}</h2>
-      {/* Применял двухсторонее связывание.
-       Состояния h2 и Input  */}
-      <input
-        type="text"
-        value={value}
-        onChange={event => setValue(event.target.value)}
-      />
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
+      <form>
+        <MyInput type='text' placeholder='Post name' />
+        <MyInput type='text' placeholder='Post description' />
+        <MyButton disabled>Create new post</MyButton>
+      </form>
+      <PostList posts={posts} title='Post list №1' />
     </div>
   );
 }
