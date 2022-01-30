@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react';
 import PostList from './components/PostList';
-import MyButton from './components/UI/button/MyButton';
 import './styles/App.css'
-import MyInput from './components/UI/input/MyInput';
+import PostForm from './components/PostForm';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -11,39 +10,13 @@ function App() {
     { id: 3, title: 'Goland', body: 'Description' },
   ])
 
-  const [post, setPost] = useState({ title: '', body: '' })
-
-  // const bodyInputRef = useRef();
-
-  const addNewPost = (e) => {
-    e.preventDefault()
-    setPosts([...posts, { ...post, id: Date.now() }])
-    setPost({ title: '', body: '' })
-
-    // console.log(title)
-    // console.log(bodyInputRef.current.value)
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost])
   }
 
   return (
     <div className="App">
-      <form>
-        {/* Managed component */}
-        <MyInput
-          value={post.title}
-          onChange={e => setPost({ ...post, title: e.target.value })}
-          type='text'
-          placeholder='Post name'
-        />
-        {/* UnManaged Component */}
-        <MyInput
-          // ref={bodyInputRef}
-          value={post.body}
-          onChange={e => setPost({ ...post, body: e.target.value })}
-          type='text'
-          placeholder='Post description'
-        />
-        <MyButton onClick={addNewPost}>Create new post</MyButton>
-      </form>
+      <PostForm create={createPost} />
       <PostList posts={posts} title='Post list №1' />
     </div>
   );
